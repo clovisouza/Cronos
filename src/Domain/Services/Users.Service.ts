@@ -4,7 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { TB_User } from 'src/Domain/Entidades/TB_User';
 import { UserRole } from 'src/Domain/Enumerador/User-Role.enum';
 import { UserRepository } from 'src/Infrastructure/Repository/User.Repository';
-import { User } from '../Domain/Dto/User';
+import { User } from '../Dto/User';
 
 
 @Injectable()

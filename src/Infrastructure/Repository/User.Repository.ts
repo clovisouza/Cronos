@@ -1,12 +1,14 @@
 /* eslint-disable prettier/prettier */
 import { EntityRepository, Repository } from 'typeorm';
-import { TB_User } from 'src/Domain/Entidades/TB_User';
+
 import { UserRole } from '../../Domain/Enumerador/User-Role.enum';
 import * as bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
-import { User } from 'src/Domain/Dto/User';
+
 
 import {ConflictException,InternalServerErrorException} from '@nestjs/common';
+import { TB_User } from 'src/Domain/Entidades/TB_User';
+import { User } from 'src/Domain/Dto/User';
 
 
 @EntityRepository(TB_User)
@@ -40,7 +42,16 @@ export class UserRepository extends Repository<TB_User> {
       }
     }
   }
+  async checkCredentials(credentialsDto: User): Promise<TB_User> {
+    const { email, password } = credentialsDto;
+    const user = await this.findOne({ email, status: true });
 
+    if (user && (await user.checkPassword(password))) {
+      return user;
+    } else {
+      return null;
+    }
+  }
   private async hashPassword(password: string, salt: string): Promise<string> {
     return bcrypt.hash(password, salt);
   }

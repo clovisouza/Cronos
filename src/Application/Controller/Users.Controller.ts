@@ -1,8 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { Controller, Post, Body,ValidationPipe } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UsersService } from './users.service';
-import { ReturnUserDto } from './dto/return-user.dto';
+import { ReturnUser } from 'src/Domain/Message/Return-User';
+import { UsersService } from 'src/Services/Users.Service';
+import { User } from '../../Domain/Dto/User';
+
+
 
 @Controller('users')
 export class UsersController {
@@ -10,8 +12,8 @@ export class UsersController {
 
   @Post('createAdminUser')
   async createAdminUser(
-    @Body(ValidationPipe) createUserDto: CreateUserDto,
-  ): Promise<ReturnUserDto> {
+    @Body(ValidationPipe) createUserDto: User,
+  ): Promise<ReturnUser> {
     const user = await this.usersService.createAdminUser(createUserDto);
     return {
       user,

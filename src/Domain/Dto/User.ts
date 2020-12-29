@@ -7,7 +7,7 @@ import {
   MinLength,
 } from 'class-validator';
 
-export class CreateUserDto {
+export class User {
   @ApiProperty()
   @IsNotEmpty({
     message: 'Informe um endereço de email',

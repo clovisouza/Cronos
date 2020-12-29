@@ -9,6 +9,6 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   password: 'pgpassword',
   database: 'nestjs',
   // entities: [__dirname + '/../**/*.entity.{js,ts}'],
-  entities: [__dirname + '/../../Domain/Entidades/*.Entity.{js,ts}'],
+  entities: [__dirname + '/../../Domain/Entidades/*.{js,ts}'],
   synchronize: true,
 };

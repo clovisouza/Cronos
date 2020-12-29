@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { EntityRepository, Repository } from 'typeorm';
-import { UserEntity } from 'src/Domain/Entidades/User.Entity';
+import { TB_User } from 'src/Domain/Entidades/TB_User';
 import { UserRole } from '../../Domain/Enumerador/User-Role.enum';
 import * as bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
@@ -9,12 +9,12 @@ import { User } from 'src/Domain/Dto/User';
 import {ConflictException,InternalServerErrorException} from '@nestjs/common';
 
 
-@EntityRepository(UserEntity)
-export class UserRepository extends Repository<UserEntity> {
+@EntityRepository(TB_User)
+export class UserRepository extends Repository<TB_User> {
   async createUser(
     createUserDto: User,
     role: UserRole,
-  ): Promise<UserEntity> {
+  ): Promise<TB_User> {
     const { email, name, password } = createUserDto;
 
     const user = this.create();

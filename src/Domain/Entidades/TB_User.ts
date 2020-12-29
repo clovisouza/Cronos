@@ -11,7 +11,7 @@ import {
 
 @Entity()
 @Unique(['email'])
-export class UserEntity extends BaseEntity {
+export class TB_User extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

@@ -1,8 +1,9 @@
 /* eslint-disable prettier/prettier */
 
-import { UserEntity } from "../Entidades/User.Entity";
+import { TB_User } from "../Entidades/TB_User";
+
 
 export class ReturnUser {
-  user: UserEntity;
+  user: TB_User;
   message: string;
 }

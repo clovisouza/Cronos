@@ -1,9 +1,14 @@
 import { NestFactory } from '@nestjs/core';
+import { WinstonModule } from 'nest-winston';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import { winstonConfig } from './Infrastructure/Configs/winston.config';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+
+  const logger = WinstonModule.createLogger(winstonConfig);
+
+  const app = await NestFactory.create(AppModule, { logger });
 
   const options = new DocumentBuilder()
     .setTitle('Cadastro de Usuários Cronos')

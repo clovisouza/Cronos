@@ -10,6 +10,7 @@ import { GetUser } from 'src/Infrastructure/Decorator/User.Decorator';
 
 
 @Controller('auth')
+
 export class AuthController {
   constructor(private authService: AuthService) {}
 
